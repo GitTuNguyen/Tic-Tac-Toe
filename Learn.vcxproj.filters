@@ -13,33 +13,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\source">
+      <UniqueIdentifier>{6add0d91-256e-4c7c-af67-1687f512dbc0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\Board.cpp">
+      <Filter>Source Files\source</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\Game.cpp">
+      <Filter>Source Files\source</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\Main.cpp">
+      <Filter>Source Files\source</Filter>
     </ClCompile>
-    <ClCompile Include="Board.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\Play.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Player.cpp">
+      <Filter>Source Files\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Board.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="source\Board.h">
+      <Filter>Source Files\source</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="source\Game.h">
+      <Filter>Source Files\source</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="source\GameConst.h">
+      <Filter>Source Files\source</Filter>
     </ClInclude>
-    <ClInclude Include="GameConst.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="source\Player.h">
+      <Filter>Source Files\source</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
