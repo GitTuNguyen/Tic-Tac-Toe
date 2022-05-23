@@ -27,12 +27,6 @@
     <ClCompile Include="source\Main.cpp">
       <Filter>Source Files\source</Filter>
     </ClCompile>
-    <ClCompile Include="source\Play.cpp">
-      <Filter>Source Files\source</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Player.cpp">
-      <Filter>Source Files\source</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Board.h">
@@ -42,9 +36,6 @@
       <Filter>Source Files\source</Filter>
     </ClInclude>
     <ClInclude Include="source\GameConst.h">
-      <Filter>Source Files\source</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Player.h">
       <Filter>Source Files\source</Filter>
     </ClInclude>
   </ItemGroup>

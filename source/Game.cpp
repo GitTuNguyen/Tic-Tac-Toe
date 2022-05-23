@@ -2,74 +2,85 @@
 #pragma once
 #include "Game.h"
 #include "Board.h"
-void Game::setIsPlayerWantExit(bool i_isPlayerWantExit)
-{
-	m_isPlayerWantExit = i_isPlayerWantExit;
-}
-bool  Game::getIsPlayerWantExit()
-{
-	return m_isPlayerWantExit;
-}
-void Game::setBoard(Board* i_board)
-{
-	m_board = i_board;
-}
-Board* Game::getBoard()
-{
-	return m_board;
-}
-void Game::InitGame()
+
+Game::Game()
 {
 	m_board = new Board();
-	char* i_board = new char[9];
-	for (int i = 0; i < 9; i++)
-	{
-		i_board[i] = (char) ('1' + i);
-	}
-	m_board->setBoardData(i_board);
-	m_board->setMovesPlayed(0);
-	m_board->setGameResult(GameResult::NONE);	
-	Player i_player;
-	i_player.setCurrentPlay('X');
-	m_board->setPlayer(i_player);
-	setIsPlayerWantExit(false);
+	m_currentMoveType = 'X';
+	m_isPlayerWantExit = false;	
 }
-void Game::isPlayAgain()
+
+void Game::CreateNewMatch()
+{
+	m_board->Reset();
+	
+}
+void Game::Rematch()
 {
 	char inputPlayer;
-	cout << k_padding << "Co lam phat nua khong 2 ban? (Nhap Y de choi lai, nhap ky tu khac de thoat game) :  ";
+	cout << k_padding << "Play again? (Y to play again, another key to quit): ";
 	cin >> inputPlayer;
 	if (inputPlayer == 'Y' || inputPlayer == 'y')
 	{
-		InitGame();
+		CreateNewMatch();
 	}
 	else {
-		setIsPlayerWantExit(true);
+		m_isPlayerWantExit = true;
 	}
 }
-void Game::UpdateGame()
+void Game::Update()
 {
-	while (!getIsPlayerWantExit())
+	while (!m_isPlayerWantExit)
 	{
 		system("CLS");
-		Board* i_board = getBoard();
-		GameResult i_gameResult = i_board->getGameResult();
-		if (i_gameResult == GameResult::NONE)
+
+		m_board->Render();
+
+		GameResult gameResult = m_board->GetGameResult();
+		if (gameResult == GameResult::NONE)
 		{
-			i_board->RenderBoard();
-			i_board->UpdatePlayerMove();
+			UpdateMove();
 		}
 		else {
-			i_board->RenderBoard();
-			i_board->RenderGameOver();
-			isPlayAgain();
+			RenderGameOver();
+			Rematch();
 		}
 	}
 }
 
-void Game::EndGame()
+void Game::UpdateMove()
 {
-
+	bool isValidMove = false;
+	size_t movePosition;
+	while (!isValidMove)
+	{
+		cout << k_padding << "Player " << m_currentMoveType << " turn : ";
+		cin >> movePosition;
+		isValidMove = m_board->ValidateMove(movePosition);
+	}
+	m_board->Update(movePosition, m_currentMoveType);
+	m_currentMoveType = m_currentMoveType == 'X' ? 'O' : 'X';
 }
 
 
+void Game::RenderGameOver()
+{
+	cout << k_padding << "\t       ---Game---+---OVER--- \n";
+	GameResult gameResult = m_board->GetGameResult();
+	switch (gameResult)
+	{
+	case NONE:
+		break;
+	case X_WIN:
+		cout << k_padding << "\t+--- Player 1 [X] WIN! Conratulation ---+\n";
+		break;
+	case O_WIN:
+		cout << k_padding << "+--- Player 2 [O] WIN! Conratulation ---+\n";
+		break;
+	case DRAW:
+		cout << k_padding << "+--- Game draw! ---+\n";
+		break;
+	default:
+		break;
+	}
+}
