@@ -120,3 +120,8 @@ bool Board::ValidateMove(size_t i_playerMove)
 	}
 	return true;
 }
+
+Board::~Board()
+{
+	delete[] m_boardData;
+}

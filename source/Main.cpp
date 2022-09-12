@@ -7,5 +7,7 @@ void main()
 
 	game->Update();
 
+	delete game;
+
 	getchar();
 }

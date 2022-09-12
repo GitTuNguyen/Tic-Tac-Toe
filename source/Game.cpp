@@ -84,3 +84,9 @@ void Game::RenderGameOver()
 		break;
 	}
 }
+
+
+Game::~Game()
+{
+	delete m_board;
+}
